@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drone Guru - Our Services</title>
+  <style>
+    body {
+      background-image: url('images/services.png');
+      background-size: 120%; /* Start with a zoomed-in background */
+      
+      /* Adjust background size for smaller screens */
+      @media (max-width: 768px) {
+        background-size: cover; /* Ensure the background fits smaller screens */
+      }
+      background-position: center;
+      animation: zoomOut 20s ease-in-out infinite; /* Apply the zoom-out animation */
+      position: relative;
+      color: black;
+      text-align: center;
+      padding-top: 30px;
+      flex: 1;
+      margin-top: 130px; /* Adds 30px space below the header (header height is 100px) */
+      font-family: Arial, sans-serif;
+    }
+
+    @keyframes zoomOut {
+      0% {
+        background-size: 120%; /* Zoomed-in state */
+      }
+      50% {
+        background-size: 100%; /* Normal size */
+      }
+      100% {
+        background-size: 120%; /* Zoomed-in state again */
+      }
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      z-index: -1;
+    }
+
+    header {
+      position: fixed; /* Fix the header at the top */
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 30px; /* Reduced padding-left by 10px to move the sign bar to the left */
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .logo img {
+      height: 100px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: bold; /* Makes navigation text bold */
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #6200a3;
+    }
+
+    .nav-links a.active {
+      color: #6200a3;
+      text-decoration: none;
+      border-bottom: 2px solid #6200a3;
+      padding-bottom: 2px;
+      transition: border-color 0.3s ease;
+    }
+
+    .admin-btn {
+      background-color: #6200a3;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-right: 65px;
+    }
+
+    .admin-btn:hover {
+      background-color: #4b007a;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 60px;
+      font-size: 48px;
+      color: #ffffff;
+      text-shadow: 1px 1px 4px #000;
+    }
+
+    .circle-wrapper {
+      position: relative;
+      width: 1000px;
+      height: 1000px;
+      margin: 30px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .circle-wrapper h1 {
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 48px;
+      color: #ffffff;
+      text-shadow: 1px 1px 4px #000;
+      z-index: 10; /* Ensures it appears above the circular images */
+    }
+
+    .circular-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+    }
+
+    .service {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .service:hover {
+      transform: scale(1.2) translate(-50%, -50%) rotate(10deg);
+      z-index: 3;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+    }
+
+    .circular-container .service img {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #ffffff;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+      transition: transform 0.4s ease, box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+
+    .circular-container .service img:hover {
+      transform: scale(1.2) rotate(5deg);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+      border-color: #03a9f4;
+    }
+
+    .label {
+      background-color: #131414;
+      color: white;
+      font-weight: bold;
+      padding: 6px 12px;
+      border-radius: 20px;
+      position: absolute;
+      top: -25px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+    }
+
+    .modal-content {
+      background-color: #fff;
+      padding: 30px;
+      max-width: 800px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+
+    .modal-content h2 {
+      margin-bottom: 20px;
+      color: #333;
+      font-size: 28px;
+    }
+
+    .modal-content p {
+      color: #555;
+      line-height: 1.6;
+      text-align: left;
+    }
+
+    .modal-content ul {
+      text-align: left;
+      padding-left: 20px;
+    }
+
+    .modal-content li {
+      margin-bottom: 8px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 30px;
+      cursor: pointer;
+      color: #333;
+      background: none;
+      border: none;
+    }
+
+    .course-section {
+      margin: 20px 0;
+      padding: 15px;
+      background: #f5f5f5;
+      border-radius: 8px;
+      text-align: left;
+    }
+
+    .course-section h3 {
+      color: #2c3e50;
+      border-bottom: 2px solid #3498db;
+      padding-bottom: 5px;
+      margin-bottom: 10px;
+    }
+
+    /* Add this new style for the submit button */
+    .btn-submit {
+      display: inline-flex;
+      align-items: center;
+      background: linear-gradient(135deg, #3498db, #2c3e50);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      margin-top: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+      text-decoration: none;
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    }
+
+    .btn-icon {
+      width: 20px;
+      height: 20px;
+      margin-right: 10px; /* Adds spacing between the icon and text */
+    }
+
+    .side-banner {
+      position: fixed;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      z-index: 999;
+    }
+
+    .enroll-banner-btn {
+      background: linear-gradient(135deg, #e8eeea, #0d0d0e);
+      color: white;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 0 30px 30px 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 2px 6px 18px rgba(0, 0, 0, 0.3);
+      writing-mode: vertical-rl;
+      text-orientation: mixed;
+      transform: translateY(-50%) rotate(180deg);
+      text-decoration: none;
+    }
+
+    .enroll-banner-btn:hover {
+      background: linear-gradient(135deg, #03a9f4, #00e676);
+      box-shadow: 0 0 25px rgba(0, 200, 83, 0.5);
+    }
+
+    @media (max-width: 768px) {
+      .logo img {
+        height: 70px;
+      }
+
+      header {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+      }
+
+      .navbar {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .circle-wrapper {
+        width: 100%;
+        height: auto;
+        padding: 20px;
+      }
+
+      .circular-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .service {
+        position: static;
+        transform: none;
+        margin-bottom: 40px;
+      }
+
+      .service img {
+        width: 180px;
+        height: 180px;
+      }
+
+      .enroll-banner-btn {
+        writing-mode: horizontal-tb;
+        transform: none;
+        border-radius: 30px;
+        padding: 10px 20px;
+        position: fixed;
+        bottom: 20px;
+        left: 20px;
+      }
+    }
+
+    footer {
+      text-align: center;
+      padding: 60px 10px; /* Increased padding to make the footer taller */
+      background-color: transparent;
+      font-size: 14px;
+      color: #f5f0f0; /* Set to black or replace with your desired color */
+      margin-top: 90px;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <img src="images/logo.png" alt="Drone Guru Logo" />
+      </div>
+      <div class="nav-links">
+        <a href="homepage.html">Home</a>
+        <a href="ours ervices.html" class="active">Our Services</a>
+        <a href="about us.html">About Us</a>
+        <a href="course profile.html">Course Profile</a>
+        <a href="contact us.html">Contact Us</a>
+        <a href="for hire.html"> For Hire</a>
+      </div>
+      <button class="admin-btn" id="admin-btn" onclick="toggleAdmin()">Sign In</button>
+    </div>
+  </header>
+
+  <div class="circle-wrapper">
+    <h1>OUR SERVICES</h1>
+    <div class="circular-container">
+      <div class="service" data-service="AeRoC Radio" onclick="showModal('AeRoC Radio', 'Take control of the skies: learn to communicate and control towers. Boost your aviation career with this essential qualification. Enroll now and fly ahead.')">
+        <div class="label">AeRoC Radio</div>
+        <img src="images/aeroc-radio.jpg" alt="AeRoC Radio Service">
+      </div>
+      <div class="service" data-service="images/Aerial Photography" onclick="showModal('Aerial Photography', 'We offer high-quality aerial photography services for various industries. Contact us for further information.')">
+        <div class="label">Aerial Photography</div>
+        <img src="images/aerial.jpg" alt="Aerial Photography Service">
+      </div>
+      <div class="service" data-service="Inspection & Monitoring" onclick="showModal('Inspection & Monitoring', 'Our drones perform detailed inspections and real-time monitoring. Contact us for more information.')">
+        <div class="label">Inspection & Monitoring</div>
+        <img src="images/inspection-monitoring.jpg" alt="Drone Inspection & Monitoring">
+      </div>
+      <div class="service" data-service="Custom & R&D" onclick="showModal('Custom & R&D', 'We provide custom drone solutions and R&D for specialized needs. Contact us with your requirement and we will get back to you.')">
+        <div class="label">Custom & R&D</div>
+        <img src="images/custom-rnd.jpg" alt="Custom Development & R&D">
+      </div>
+      <div class="service" data-service="Thermal Inspection" onclick="showModal('Thermal Inspection', 'Detect Heat Loss & Insulation Issues, Identify Electrical Hotspots Before Failure, Solar Panel Performance Checks, Roof Leaks & Moisture Detection, Industrial Equipment Monitoring. Book your thermal drone inspection today and stay ahead of costly surprises.')">
+        <div class="label">Thermal Inspection</div>
+        <img src="images/thermal.jpg" alt="Thermal Drone Inspection">
+      </div>
+      <div class="service" data-service="Logistics & Deliveries" onclick="showModal('Logistics & Deliveries', 'Drone-powered logistics and delivery solutions for quick transportation. Contact us for more information.')">
+        <div class="label">Logistics & Deliveries</div>
+        <img src="images/logistics.jpg" alt="Drone Logistics and Deliveries">
+      </div>
+      <div class="service" data-service="RePL Classes" onclick="showReplModal()">
+        <div class="label">RePL Classes</div>
+        <img src="images/repl-classes.jpg" alt="Remote Pilot License Classes">
+      </div>
+      <div class="service" data-service="Lidar Mapping" onclick="showModal('Lidar Mapping', 'We offer advanced Lidar mapping solutions for precision mapping and surveying. High-Resolution 3D Terrain Models, Digital Elevation Models (DEM/DTM), Contour Mapping & Volume Calculations, Vegetation and Canopy Analysis, Infrastructure & Corridor Mapping roads, railways, pipelines. Contact us for more information.')">
+        <div class="label">Lidar Mapping</div>
+        <img src="images/lidar.jpg" alt="Lidar Drone Mapping">
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div id="serviceModal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">×</button>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+    </div>
+  </div>
+
+  <!-- RePL Classes Modal -->
+  <div id="replModal" class="modal">
+    <div class="modal-content">
+      <button class="close-btn" onclick="closeModal()">×</button>
+      <h2>🛩️ Remote Pilot Licence (RePL) Drone Training Course</h2>
+      <p><strong>Become a Certified Drone Pilot – Learn, Fly, and Get Licensed!</strong></p>
+      
+      <div class="course-section">
+        <h3>Course Overview</h3>
+        <p>Our REPL Drone Training Course is designed for individuals and professionals who want to legally operate drones (over 2kg) for commercial purposes. This comprehensive course will equip you with the knowledge and hands-on experience needed to become a CASA-certified drone pilot.</p>
+      </div>
+      
+      <div class="course-section">
+        <h3>🎯 Who Is This Course For?</h3>
+        <ul>
+          <li>Aspiring commercial drone operators</li>
+          <li>Surveyors, photographers, and filmmakers</li>
+          <li>Real estate, agriculture, and mining professionals</li>
+          <li>Students entering the drone industry</li>
+          <li>Anyone wanting to operate drones professionally</li>
+        </ul>
+      </div>
+      
+      <div class="course-section">
+        <h3>📚 What You Will Learn</h3>
+        <ul>
+          <li>Aviation knowledge and air law</li>
+          <li>Meteorology and risk assessment</li>
+          <li>Navigation and flight planning</li>
+          <li>Operating procedures and battery management</li>
+          <li>Emergency procedures and safety protocols</li>
+          <li>Practical flight training with multirotor drones</li>
+        </ul>
+      </div>
+      
+      <div class="course-section">
+        <h3>Course Details</h3>
+        <p><strong>Total Duration:</strong> 12 weeks</p>
+        <p><strong>Mode:</strong> In-person / Hybrid</p>
+        <p><strong>Location:</strong> Gokarna</p>
+        <p><strong>Prerequisite:</strong> Age 16+, +2 Mandatory</p>
+      </div>
+      
+      <div class="course-section">
+        <h3>🎓 Certification</h3>
+        <p>Upon successful completion, students will receive:</p>
+        <ul>
+          <li>Remote Pilot Licence (RePL) from Drone Guru Pvt. Ltd</li>
+          <li>Aeronautical Radio Operator Certificate (AROC) – If applicable</li>
+          <li>Official logbook and training records</li>
+        </ul>
+      </div>
+      
+      <div class="course-section">
+        <h3>💼 Career Opportunities</h3>
+        <ul>
+          <li>Drone Operator for Agriculture & Surveying</li>
+          <li>Drone Photographer/Videographer</li>
+          <li>Drone Inspector for Infrastructure Projects</li>
+          <li>Emergency Response & Environmental Monitoring</li>
+          <li>Freelance UAV Contractor</li>
+        </ul>
+      </div>
+      
+      <a href="enroll.html" class="btn-submit">
+        <img src="images/enroll-icon.png" alt="Enroll Icon" class="btn-icon" />
+        Enroll Now
+      </a>
+    </div>
+  </div>
+
+  <div class="side-banner">
+    <a href="enroll.html" class="enroll-banner-btn">
+      <img src="enroll-icon.png" alt="Enroll Icon" class="btn-icon" />
+      <span>Enroll Now</span>
+    </a>
+  </div>
+
+  <footer>
+    &copy; <span id="year"></span> Drone Guru Pvt Ltd. All rights reserved.
+  </footer>
+
+  <script>
+    // Initialize service positions in circle
+    const services = document.querySelectorAll('.circular-container .service');
+    const radius = 400;
+    const angleStep = (2 * Math.PI) / services.length;
+
+    services.forEach((service, index) => {
+      const angle = index * angleStep;
+      const x = radius * Math.cos(angle);
+      const y = radius * Math.sin(angle);
+      service.style.transform = `translate(-50%, -50%) translate(${x}px, ${y}px)`;
+    });
+
+    // Modal functions
+    function showModal(serviceName, description) {
+      const modal = document.getElementById('serviceModal');
+      document.getElementById('modalTitle').textContent = serviceName;
+      document.getElementById('modalDescription').textContent = description;
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function showReplModal() {
+      const modal = document.getElementById('replModal');
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      document.getElementById('serviceModal').style.display = 'none';
+      document.getElementById('replModal').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside
+    window.addEventListener('click', function(event) {
+      if (event.target.classList.contains('modal')) {
+        closeModal();
+      }
+    });
+
+    // Error handling for images
+    document.querySelectorAll('img').forEach(img => {
+      img.onerror = function() {
+        this.style.display = 'none';
+        console.log('Image failed to load: ' + this.alt);
+      };
+    });
+
+    // Admin button toggle function
+    function toggleAdmin() {
+      const btn = document.getElementById("admin-btn");
+      btn.textContent = (btn.textContent === "Sign In") ? "Sign Out" : "Sign In";
+    }
+
+    // Update footer year dynamically
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

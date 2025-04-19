@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RePL Course Profile | Drone Guru Pvt Ltd</title>
+  <style>
+     .hero {
+      background-image: url('images/course\ profile\ background.png');
+      background-size: 120%;
+      background-position: center;
+      animation: zoomOut 20s ease-in-out infinite;
+      position: relative;
+      color: white; /* Changed to white for better visibility */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Added text shadow for contrast */
+      text-align: center;
+      padding-top: 30px;
+      flex: 1;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url('images/course\ profile\ background.png') no-repeat center center fixed;
+      background-size: cover; /* Ensures the image covers the entire screen */
+      color: #070707; /* Adjust text color for better contrast */
+      background-color: rgba(233, 227, 244, 0.466); /* Adjusted to make the overlay more transparent */
+      background-blend-mode: overlay; /* Blends the overlay with the background image */
+    }
+    
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 100px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #6200a3;
+    }
+
+    .nav-links a.active {
+      color: #6200a3;
+      border-bottom: 2px solid #6200a3;
+      padding-bottom: 2px;
+      transition: border-color 0.3s ease;
+    }
+
+    .admin-btn {
+      background-color: #6200a3;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-right: 70px;
+    }
+
+    .admin-btn:hover {
+      background-color: #4b007a;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 120px auto 40px;
+      background: white;
+      padding: 35px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, h2 {
+      color: #1e3d59;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    .enroll-btn {
+      display: inline-block;
+      padding: 12px 25px;
+      background-color: #ff6e40;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 25px;
+    }
+
+    .enroll-btn:hover {
+      background-color: #e85c33;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" alt="Drone Guru Logo" />
+    </div>
+    <div class="nav-links">
+      <a href="homepage.html">Home</a>
+      <a href="our services.html">Our Services</a>
+      <a href="about us.html">About Us</a>
+      <a href="course profile.html" class="active">Course Profile</a>
+      <a href="contact us.html">Contact Us</a>
+      <a href="for hire.html"> For Hire</a>
+    </div>
+    <button class="admin-btn" id="admin-btn" onclick="toggleAdmin()">Sign In</button>
+  </div>
+</header>
+<div class="container" style="background: rgba(255, 255, 255, 0.6);">
+  <h2 style="text-align: center; color: #6200a3; font-size: 2em; margin-bottom: 20px;">Course Overview</h2>
+  <p id="course-overview" style="line-height: 1.8; font-size: 1.1em;"></p>
+    The <strong>RePL course</strong> offered by <strong>Drone Guru Pvt Ltd</strong> is tailored for individuals and professionals in Nepal aiming to become certified drone pilots. This training meets the standards set by the Civil Aviation Safety Authority (CASA) and covers both theoretical and practical components required to operate drones legally and safely.
+  </p>
+
+  <h2 style="color: #6200a3; margin-top: 30px;">What You'll Learn</h2>
+  <ul style="list-style-type: square; margin-left: 20px; line-height: 1.8;">
+    <li>Introduction to drones and airspace rules in Nepal</li>
+    <li>Drone operation and maintenance fundamentals</li>
+    <li>Flight planning and emergency procedures</li>
+    <li>Weather, safety, and risk management</li>
+    <li>Live flight practice with professional instructors</li>
+  </ul>
+
+  <h2 style="color: #6200a3; margin-top: 30px;">Course Duration</h2>
+  <p style="line-height: 1.8; font-size: 1.1em;">8 to 12 weeks (includes theory, practical training, and examination)</p>
+
+  <h2 style="color: #6200a3; margin-top: 30px;">Eligibility Requirements</h2>
+  <ul style="list-style-type: square; margin-left: 20px; line-height: 1.8;">
+    <li>Minimum age: 16 years</li>
+    <li>Basic English and mathematical skills</li>
+    <li>Valid citizenship or passport</li>
+    <li>Medically fit to operate a drone</li>
+  </ul>
+
+  <h2 style="color: #6200a3; margin-top: 30px;">Certification</h2>
+  <p style="line-height: 1.8; font-size: 1.1em;">
+    After successful completion, you will receive a <strong>Remotely Piloted Aircraft Licence (RePL)</strong> issued under the guidelines of Drone Guru Private Limited.
+  </p>
+
+  <h2 style="color: #6200a3; margin-top: 30px;">Career Opportunities in Nepal</h2>
+  <ul style="list-style-type: square; margin-left: 20px; line-height: 1.8;">
+    <li>Aerial photography and videography</li>
+    <li>Real estate and infrastructure monitoring</li>
+    <li>Agricultural drone services (spraying & mapping)</li>
+    <li>Disaster response and search & rescue support</li>
+    <li>Environmental and wildlife monitoring and more</li>
+  </ul>
+</div>
+<div style="text-align: center;">
+    <p>
+        <span style="font-weight: bold; font-size: 1.2em; color: #6200a3; animation: fadeIn 2s ease-in-out;">
+            Ready to take flight? Click the button below to register for our next RePL training session. Seats are limited!
+        </span>
+        <style>
+            @keyframes fadeIn {
+                from {
+                    opacity: 0;
+                }
+                to {
+                    opacity: 1;
+                }
+            }
+        </style>
+    </p>
+    <a href="enroll.html">
+    <img src="images/enroll-icon.png" alt="Enroll Now" style="max-width: 25%; height: auto; margin-bottom: 5px;" />
+    
+</div>
+
+</body>
+</html>

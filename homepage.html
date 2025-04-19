@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="Drone Guru Pvt Ltd - Elevate Your Future. Learn to Master the Skies with our drone flying courses.">
+  <title>Drone Guru Pvt Ltd</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body, html {
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      display: flex;
+      flex-direction: column;
+      background-color: #ffffff;
+    }
+
+    .hero {
+      background-image: url('images/background.jpg');
+      background-size: 120%;
+      background-position: center;
+      animation: zoomOut 20s ease-in-out infinite;
+      position: relative;
+      color: white; /* Changed to white for better visibility */
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Added text shadow for contrast */
+      text-align: center;
+      padding-top: 30px;
+      flex: 1;
+    }
+
+    @keyframes zoomOut {
+      0%, 100% {
+        background-size: 120%;
+      }
+      50% {
+        background-size: 100%;
+      }
+    }
+
+    .disable-animations * {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 40px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background-color: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+
+    .logo img {
+      height: 100px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #6200a3;
+    }
+
+    .nav-links a.active {
+      color: #6200a3;
+      text-decoration: none;
+      border-bottom: 2px solid #6200a3;
+      padding-bottom: 2px;
+      transition: border-color 0.3s ease;
+    }
+
+    .title {
+      font-size: 48px;
+      color: #6200a3;
+      margin-top: 180px;
+      font-weight: bold;
+    }
+
+    .tagline {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 20px auto;
+      color: #1a1a1a;
+      max-width: 600px;
+    }
+
+    .contact-section {
+      text-align: center;
+      padding: 40px 0;
+      background-color: #f9f9f9;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      padding: 14px 28px;
+      font-weight: bold;
+      border: none;
+      background-color: #2fb380;
+      color: white;
+      border-radius: 6px;
+      text-decoration: none;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+
+    .contact-btn:hover {
+      background-color: #23996b;
+    }
+
+    .admin-btn {
+      background-color: #6200a3;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      margin-right: 50px;
+    }
+
+    .admin-btn:hover {
+      background-color: #4b007a;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px 10px;
+      background-color: #f2f2f2;
+      font-size: 14px;
+      color: #555;
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .logo img {
+        height: 70px;
+      }
+
+      .title {
+        font-size: 30px;
+        margin-top: 140px;
+      }
+
+      .tagline {
+        font-size: 18px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="navbar">
+      <div class="logo">
+        <img src="images/logo.png" alt="Drone Guru Logo" />
+      </div>
+      <div class="nav-links">
+        <a href="homepage.html" class="active">Home</a>
+        <a href="our services.html">Our Services</a>
+        <a href="about us.html">About Us</a>
+        <a href="course profile.html">Course Profile</a>
+        <a href="contact us.html">Contact Us</a>
+        <a href="for hire.html"> For Hire</a>
+      </div>
+      <button class="admin-btn" id="admin-btn" onclick="toggleAdmin()">Sign In</button>
+    </div>
+  </header>
+
+  <div class="hero">
+    <h1 class="title">DRONE GURU PVT LTD</h1>
+    <p class="tagline">Elevate Your Future. Learn to Master the Skies.</p>
+  </div>
+
+  <div class="contact-section">
+    <a href="contact us.html" class="contact-btn">CONTACT US</a>
+  </div>
+
+  <footer>
+    &copy; <span id="year"></span> Drone Guru Pvt Ltd. All rights reserved.
+  </footer>
+
+  <script>
+    let isSignedIn = false;
+
+    function toggleAdmin() {
+      const btn = document.getElementById("admin-btn");
+      isSignedIn = !isSignedIn;
+    }
+
+    function toggleAnimations() {
+      document.body.classList.toggle("disable-animations");
+    }
+
+    document.addEventListener("DOMContentLoaded", function() {
+      document.getElementById("year").textContent = new Date().getFullYear();
+    });
+  </script>
+
+  <button onclick="toggleAnimations()" style="position: fixed; bottom: 10px; right: 10px; z-index: 1000;">Toggle Animations</button>
+
+</body>
+</html>

@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Drone Guru - About Us</title>
+  <style>
+    :root {
+      --primary-color: #0a3d62;
+      --secondary-color: #1e5f8a;
+      --text-color: #333;
+      --white: #ffffff;
+      --bg-overlay: rgba(0, 0, 0, 0.03);
+      --content-bg: rgba(255, 255, 255, 0.9);
+      --shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      color: var(--text-color);
+      background: url('images/about\ us\ background.jpg') no-repeat center center fixed;
+      background-size: cover; /* Ensures the image covers the entire screen */
+      line-height: 1.6;
+      margin-top: 100px; /* Moves the body content 100px below the header */
+    }
+
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: var(--bg-overlay);
+      z-index: -1;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 40px;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+    }
+
+    .logo img {
+      height: 100px;
+      transition: transform 0.3s ease;
+    }
+
+    .logo img:hover {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 25px;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #333;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #6200a3;
+    }
+
+    .nav-links a.active {
+      color: #6200a3;
+    
+      border-bottom: 2px solid #6200a3;
+      padding-bottom: 2px;
+      transition: border-color 0.3s ease;
+    }
+    .tagline {
+      font-size: 24px;
+      font-weight: 600;
+      margin: 20px auto;
+      color: #1a1a1a;
+      max-width: 600px;
+    }
+
+    .admin-btn {
+      background-color: #6200a3;
+      color: white;
+      padding: 10px 18px;
+      border: none;
+      border-radius: 6px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .admin-btn:hover {
+      background-color: #4b007a;
+    }
+
+    .container {
+      display: flex;
+      justify-content: space-between;
+      padding: 40px 5%;
+      max-width: 1400px;
+      margin: 0 auto;
+      gap: 30px;
+    }
+
+    .team-column {
+      flex: 0 1 25%;
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+    }
+
+    .team-member {
+      text-align: center;
+      transition: var(--transition);
+      cursor: pointer;
+      position: relative;
+    }
+
+    .team-member:hover {
+      transform: translateY(-10px);
+    }
+
+    .team-member:hover .member-info {
+      background: var(--secondary-color);
+      color: var(--white);
+    }
+
+    .member-image {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 15px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .member-info {
+      background: var(--content-bg);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .member-info h3 {
+      color: var(--primary-color);
+      margin-bottom: 5px;
+    }
+
+    .about-content {
+      flex: 1 1 50%;
+      background: var(--content-bg);
+      padding: 40px;
+      border-radius: 10px;
+      box-shadow: var(--shadow);
+      max-width: 800px;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    .about-content h1 {
+      color: var(--primary-color);
+      margin-bottom: 25px;
+      text-align: center;
+      font-size: 2.5rem;
+    }
+
+    .about-content p {
+      margin-bottom: 15px;
+      text-align: justify;
+    }
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--primary-color);
+      color: var(--white);
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      font-size: 24px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      transition: var(--transition);
+      opacity: 0.8;
+    }
+
+    .back-to-top:hover {
+      transform: scale(1.1);
+      opacity: 1;
+      background: var(--secondary-color);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 70px 10px; /* Increased padding for a taller footer */
+      background-color: #f2f2f2;
+      font-size: 14px;
+      color: #555;
+      margin-top: 30px;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="overlay"></div>
+
+<!-- Header and Navigation -->
+<header>
+  <div class="navbar">
+    <div class="logo">
+      <img src="images/logo.png" alt="Drone Guru Logo" />
+    </div>
+    <div class="nav-links">
+      <a href="homepage.html">Home</a>
+      <a href="our services.html">Our Services</a>
+      <a href="about us.html" class="active">About Us</a>
+      <a href="course profile.html">Course Profile</a>
+      <a href="contact us.html">Contact Us</a>
+      <a href="for hire.html"> For Hire</a>
+    </div>
+    <button class="admin-btn" id="admin-btn" onclick="toggleAdmin()">Sign In</button>
+  </div>
+</header>
+
+<!-- Content -->
+<div class="container">
+  <!-- Left Team -->
+  <div class="team-column">
+    <div class="team-member" onclick="openModal('sabina')">
+      <a href="sabina.html">
+        <img src="images/bobby.jpg" alt="sabina" class="member-image">
+      </a>
+      <a href="sabina.html"></a>
+      <div class="member-info">
+        <h3>Mrs. Sabina Karmacharya Singha</h3>
+        <p>Co-Founder & Operations Manager</p>
+      </div>
+    </div>
+
+    <div class="team-member">
+      <a href="suresh.html">
+        <img src="images/suresh.JPG" alt="Suresh" class="member-image">
+      </a>
+      <div class="member-info">
+        <h3>Mr. Suresh Shrestha</h3>
+        <p>Chief Pilot<br>ARN: 1204056</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- About Us -->
+  <div class="about-content">
+    <h1>About Us</h1>
+    <p>
+      <strong>Drone Guru Pvt. Ltd.</strong> is a leading provider of drone services and training, 
+      dedicated to delivering innovative solutions in aerial technology.
+    </p>
+    <p>
+      Our mission is to empower individuals and organizations with state-of-the-art drone expertise, 
+      helping them excel in a fast-paced technological world.
+    </p>
+    <p>
+      Led by our <strong>Chief Pilot</strong>, a CASA-certified professional with a degree in Aviation 
+      from Australia, we offer comprehensive training programs designed to meet diverse certification needs.
+    </p>
+    <p>
+      Whether you require professional drone training or high-quality aerial services, 
+      Drone Guru Pvt. Ltd. is committed to providing exceptional results tailored to your goals.
+    </p>
+    <p>
+      <em><strong><u>Experience the future of aerial innovation with Drone Guru Pvt. Ltd.</u></strong></em>
+    </p>
+  </div>
+
+  <!-- Right Team -->
+  <div class="team-column">
+    <div class="team-member" onclick="openModal('ashish')">
+      <a href="ashish.html">
+        <img src="images/ashish.jpg" alt="Ashish" class="member-image">
+      </a></a>
+      <div class="member-info">
+        <h3>Mr. Ashish Shrestha</h3>
+        <p>Chief IT Programmer</p>
+      </div>
+    </div>
+
+    <div class="team-member" onclick="openModal('Roj')">
+      <a href="roj.html">
+        <img src="images/rose.jpg" alt="RoJ" class="member-image">
+      </a>
+      <div class="member-info">
+        <h3>Mr. Roj Shrestha</h3>
+        <p>Chief Multimedia Technician</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<a href="#" class="back-to-top">↑</a>
+
+<!-- Modals -->
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeModal()">&times;</span>
+    <div id="modal-text">
+      <!-- Content loaded by JS -->
+    </div>
+  </div>
+</div>
+
+<footer>
+  &copy; <span id="year"></span> Drone Guru Pvt Ltd. All rights reserved.
+</footer>
+
+<script>
+  const modal = document.getElementById('modal');
+  
+
+  const profiles = {
+    sabina: {
+      name: "Mrs. Sabina Karmacharya Singha",
+      role: "Co-Founder & Operations Manager",
+     
+      
+    },
+    suresh: {
+      name: "Mr. Suresh Shrestha",
+      role: "Chief Pilot (ARN: 1204056)",
+      details: '<a href="suresh.html">Learn more about Mr. Suresh Shrestha</a>'
+     
+    },
+    ashish: {
+      name: "Mr. Ashish Shrestha",
+      role: "Chief IT Programmer",
+     
+    },
+    rose: {
+      name: "Mr. Roj Shrestha",
+      role: "Chief Multimedia Technician",
+      
+    }
+  };
+
+  function openModal(person) {
+    const p = profiles[person];
+    modalText.innerHTML = `<h2>${p.name}</h2><h4>${p.role}</h4><p>${p.details}</p>`;
+    modal.style.display = 'block';
+  }
+
+  function closeModal() {
+    modal.style.display = 'none';
+  }
+
+  window.onclick = function(event) {
+    if (event.target === modal) {
+      closeModal();
+    }
+  };
+
+  function toggleAdmin() {
+    alert("Admin Sign-In functionality is not implemented yet.");
+  }
+
+  // Update footer year dynamically
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Drone Guru Student Enrolment Form</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: url('images/drone graduation.png') no-repeat center center fixed;
+      background-size: cover;
+      background-color: rgba(253, 253, 253, 0.6);
+      background-blend-mode: lighten;
+    }
+    h2 {
+      color: #333;
+    }
+    form {
+      background-color: rgba(248, 247, 247, 0.407); /* Transparent background */
+      padding: 25px;
+      border-radius: 10px;
+      max-width: 800px;
+      margin: auto;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    label {
+      display: block;
+      margin-top: 15px;
+      font-weight: bold;
+    }
+    input[type="text"],
+    input[type="email"],
+    input[type="date"],
+    input[type="tel"],
+    textarea {
+      width: 100%;
+      padding: 8px;
+      margin-top: 5px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+    .checkbox-group {
+      margin-top: 5px;
+    }
+    .checkbox-group label {
+      font-weight: normal;
+      display: inline-block;
+      margin-right: 15px;
+    }
+    textarea {
+      resize: vertical;
+      height: 80px;
+    }
+    .section {
+      margin-top: 30px;
+      border-top: 1px solid #ddd;
+      padding-top: 20px;
+    }
+    .submit-btn {
+      margin-top: 30px;
+      padding: 10px 20px;
+      background-color: #da0a0a;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+  <form>
+    <h2 style="text-align: center;">Drone Guru Student Enrolment Form</h2>
+    <p style="text-align: center;">Welcome to Drone Guru!</p>
+      <p style="text-align: center;">Please complete the form below to enrol in our drone training program.</p>
+
+    <!-- Personal Information -->
+    <div class="section">
+      <h3>Personal Information</h3>
+      <label>Full Name:</label>
+      <input type="text" name="full_name">
+
+      <label>Date of Birth:</label>
+      <input type="date" name="dob">
+
+      <label>Gender:</label>
+      <div class="checkbox-group">
+        <label><input type="radio" name="gender" value="Male"> Male</label>
+        <label><input type="radio" name="gender" value="Female"> Female</label>
+        <label><input type="radio" name="gender" value="Other"> Other</label>
+        <label><input type="radio" name="gender" value="Prefer not to say"> Prefer not to say</label>
+      </div>
+
+      <label>Email Address:</label>
+      <input type="email" name="email">
+
+      <label>Phone Number:</label>
+      <input type="tel" name="phone">
+
+      <label>Address:</label>
+      <textarea name="address"></textarea>
+    </div>
+
+    <!-- Emergency Contact -->
+    <div class="section">
+      <h3>Emergency Contact Information</h3>
+      <label>Emergency Contact Name:</label>
+      <input type="text" name="emergency_name">
+
+      <label>Relationship:</label>
+      <input type="text" name="relationship">
+
+      <label>Emergency Contact Phone Number:</label>
+      <input type="tel" name="emergency_phone">
+    </div>
+
+    <!-- Education -->
+    <div class="section">
+      <h3>Educational Background</h3>
+      <label>Highest Level of Education Completed:</label>
+      <div class="checkbox-group">
+        <label><input type="radio" name="education" value="High School"> High School</label>
+        <label><input type="radio" name="education" value="Undergraduate"> Undergraduate</label>
+        <label><input type="radio" name="education" value="Graduate"> Graduate</label>
+        <label><input type="radio" name="education" value="Other"> Other:</label>
+        <input type="text" name="other_education">
+      </div>
+
+      <label>School/University Name:</label>
+      <input type="text" name="school">
+
+      <label>Field of Study:</label>
+      <input type="text" name="field_of_study">
+    </div>
+
+    <!-- Drone Experience -->
+    <div class="section">
+      <h3>Drone Experience</h3>
+      <label>Do you have previous drone flying experience?</label>
+      <div class="checkbox-group">
+        <label><input type="radio" name="drone_experience" value="Yes"> Yes</label>
+        <label><input type="radio" name="drone_experience" value="No"> No</label>
+      </div>
+
+      <label>If yes, please describe your experience:</label>
+      <textarea name="experience_description"></textarea>
+    </div>
+
+    <!-- Course Information -->
+    <div class="section">
+      <h3>Course Information</h3>
+      <label>Preferred Training Program:</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="course" value="RePL"> RePL</label>
+        <label><input type="checkbox" name="course" value="AeRoc"> AeRoc</label>
+        <label><input type="checkbox" name="course" value="Basic"> Basic</label>
+        <label><input type="checkbox" name="course" value="Practical"> Practical Session only</label>
+      </div>
+
+      <label>Preferred Start Date:</label>
+      <input type="date" name="start_date">
+    </div>
+
+    <!-- Additional Info -->
+    <div class="section">
+      <h3>Additional Information</h3>
+      <label>Why are you interested in joining the Drone Guru program?</label>
+      <textarea name="interest_reason"></textarea>
+
+      <label>Do you have any special needs or requirements we should be aware of?</label>
+      <textarea name="special_needs"></textarea>
+    </div>
+
+    <!-- Consent -->
+    <div class="section">
+      <h3>Consent and Agreement</h3>
+      <label>I agree to the terms and conditions of Drone Guru.</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="agree_terms"> Yes</label>
+      </div>
+
+      <label>I consent to the collection and use of my personal data as per Drone Guru’s privacy policy.</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="agree_privacy"> Yes</label>
+      </div>
+
+      <label>Signature:</label>
+      <input type="text" name="signature">
+
+      <label>Date:</label>
+      <input type="date" name="consent_date">
+    </div>
+
+    <button type="submit" class="submit-btn">Submit</button>
+  </form>
+
+</body>
+</html>
